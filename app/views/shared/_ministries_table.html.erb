@@ -1,0 +1,39 @@
+<table class="<%= ministries.any? ? 'datatable-sorted' : '' %> table table-striped table-bordered table-condensed responsive-table">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th class='date'>When</th>
+    <th>Venue</th>
+    <th>City</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% if ministries.empty? %>
+    <tr>
+      <td colspan="4">No ministries found.</td>
+    </tr>
+  <% end %>
+  <% ministries.each do |ministry| %>
+    <tr>
+      <td>
+        <% if ministry.to_linkable.present? %>
+          <%= link_to ministry.title, ministry.to_linkable %>
+        <% else %>
+          <%= ministry.title %>
+        <% end %>
+      </td>
+      <td>
+        <%= ministry.when %>
+      </td>
+      <% if ministry.location %>
+        <td><%= ministry.location_name %></td>
+        <td><%= ministry.location_city_and_state %></td>
+      <% else %>
+        <td></td>
+        <td></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

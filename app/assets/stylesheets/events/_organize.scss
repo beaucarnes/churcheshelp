@@ -1,0 +1,149 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins/clearfix";
+@import "constants";
+
+.organizer-breadcrumb {
+  @include clearfix();
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgb(209, 209, 209);
+  vertical-align: bottom;
+
+  strong {
+    font-size: 24px;
+  }
+
+  .header-actions {
+    float: right;
+    @media (max-width: $screen-xs-max) {
+      float: none;
+    }
+  }
+}
+
+.organizer-dashboard-title {
+  font-size: 28px;
+  margin: 12px 0;
+}
+
+.organizer-dashboard {
+  h3 {
+    margin: 10px 0;
+    font-family: AmbleRegular;
+  }
+  h2 {
+    font-family: AmbleBold;
+  }
+}
+
+.organizer-button-tip {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+  @media (max-width: $screen-xs-max) {
+    width: auto;
+  }
+}
+
+.organizer-action {
+  margin-bottom: 5px;
+  font-size: 14px;
+  margin-right: 10px;
+  display: inline-block;
+
+  @media (max-width: $screen-xs-max) {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  &.organizer-action-inline {
+    i {
+      display: inline;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .organizer-action-button {
+      width: auto;
+    }
+  }
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+
+  .organizer-action-button {
+    text-align: center;
+    width: 150px;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 10px;
+    color: $blue-color;
+    background: linear-gradient(0deg, #ddd 30%, #eee 70%);
+
+    &:hover {
+      background: linear-gradient(0deg, #ccc 30%, #ddd 70%);
+    }
+
+    @media (max-width: $screen-xs-max) {
+      margin: 0 auto;
+    }
+  }
+
+  i {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 8px;
+  }
+}
+
+.organizer-dashboard-section {
+  margin: 15px 0;
+
+  &.bordered {
+    border: 1px dashed #ddd;
+    padding: 5px;
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+  }
+}
+
+.section-arranger-link {
+  font-size: 32px;
+
+  .section-arranger-link-text {
+    margin-left: 15px;
+
+    @media (max-width: $screen-xs-max) {
+      margin: 0;
+      font-size: 24px;
+      text-align: center;
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}
+
+.session-attendance {
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 20px;
+  border: 1px solid rgb(205, 205, 228);
+  padding: 7px;
+
+  @media (max-width: $screen-xs-max) {
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .btn.btn-small {
+    font-size: 12px;
+    background: rgb(194, 230, 255);
+    color: black;
+    padding: 3px 4px;
+  }
+}

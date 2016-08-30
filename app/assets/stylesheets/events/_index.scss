@@ -1,0 +1,80 @@
+@import "bootstrap/variables";
+@import "constants";
+
+.past-events {
+  margin-top: 30px;
+}
+
+.region-select-container {
+  width: 100%;
+}
+
+@media (min-width: $screen-xs-max) {
+  .region-select-container {
+    float: right;
+    width: auto;
+    margin-right: 100px;
+
+    select.form-control {
+      width: 220px;
+    }
+  }
+}
+
+.event-card {
+  border: 1px solid #ddd;
+  background-color: #fcfcfc;
+  padding: 13px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  width: 45%;
+
+  &.unpublished {
+    opacity: .4;
+  }
+
+  .unpublished-indicator {
+    font-size: 24px;
+    color: $red-color;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  i {
+    &.fa-calendar {
+      color: $blue-color;
+      font-size: 16px;
+    }
+    &.fa-map-marker {
+      color: $red-color;
+      font-size: 20px;
+    }
+    &.fa-user {
+      color: $orange-color;
+    }
+    margin-right: 6px;
+  }
+
+  .event-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .event-title, .event-times, .event-location {
+    padding-bottom: 8px;
+  }
+
+  .event-actions {
+    margin-top: 9px;
+    text-align: center;
+    .btn {
+      margin-top: 3px;
+    }
+  }
+}

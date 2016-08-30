@@ -1,0 +1,102 @@
+@import "constants";
+@import "bootstrap/variables";
+
+.header-user-controls {
+  @media (min-width: $screen-xs-max) {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.navbar {
+  background: #333;
+  h1 {
+    font-size: 25px;
+    color: white;
+    padding-left: 10px;
+     padding-right: 10px;
+     padding-top: 5px;
+  }
+  &.navbar-default {
+    border: none;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    padding-right: 0;
+
+    .navbar-nav {
+      margin: 0;
+      text-align: center;
+
+      li {
+        float: none;
+        display: inline-block;
+
+        a {
+          display: inline-block;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .navbar-nav li a {
+    color: white;
+    text-shadow: none;
+    margin-right: 15px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    &:hover, &:focus {
+      color: black;
+      background: $orange-color;
+    }
+  }
+
+  .nav-blurb {
+    color: white;
+    font-size: 12px;
+    text-shadow: none;
+    margin-left: 15px;
+    line-height: 12px;
+    position: relative;
+    top: -2px;
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+    @media (max-width: 860px) {
+      display: none;
+    }
+  }
+
+  .app-name {
+    background-color: $red-color;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    padding-top: 10px;
+    height: 54px;
+
+    img {
+      width: 170px;
+      height: 40px;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .app-name {
+      display: block;
+      text-align: center;
+    }
+    .nav {
+      width: 100%;
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,414 @@
+GEM
+  remote: https://rubygems.org/
+  remote: https://rails-assets.org/
+  specs:
+    actionmailer (4.2.5)
+      actionpack (= 4.2.5)
+      actionview (= 4.2.5)
+      activejob (= 4.2.5)
+      mail (~> 2.5, >= 2.5.4)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+    actionpack (4.2.5)
+      actionview (= 4.2.5)
+      activesupport (= 4.2.5)
+      rack (~> 1.6)
+      rack-test (~> 0.6.2)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionview (4.2.5)
+      activesupport (= 4.2.5)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_hash (1.4.1)
+      activesupport (>= 2.2.2)
+    activejob (4.2.5)
+      activesupport (= 4.2.5)
+      globalid (>= 0.3.0)
+    activemodel (4.2.5)
+      activesupport (= 4.2.5)
+      builder (~> 3.1)
+    activerecord (4.2.5)
+      activemodel (= 4.2.5)
+      activesupport (= 4.2.5)
+      arel (~> 6.0)
+    activesupport (4.2.5)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    addressable (2.3.8)
+    arel (6.0.3)
+    autoprefixer-rails (6.1.1)
+      execjs
+      json
+    awesome_print (1.6.1)
+    backbone-on-rails (1.2.0.0)
+      eco
+      ejs
+      jquery-rails
+      railties
+    bcrypt (3.1.10)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
+    builder (3.2.2)
+    bullet (4.14.10)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
+    byebug (8.2.0)
+    capybara (2.5.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    capybara-screenshot (1.0.11)
+      capybara (>= 1.0, < 3)
+      launchy
+    choice (0.2.0)
+    cliver (0.3.2)
+    coderay (1.1.0)
+    coffee-rails (4.1.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.10.0)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
+    crass (1.0.2)
+    debug_inspector (0.0.2)
+    devise (3.5.2)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    diff-lcs (1.2.5)
+    dotenv (2.0.2)
+    dotenv-rails (2.0.2)
+      dotenv (= 2.0.2)
+      railties (~> 4.0)
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
+    ejs (1.1.1)
+    erubis (2.7.0)
+    excon (0.45.4)
+    execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
+    faker (1.6.1)
+      i18n (~> 0.5)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
+    font-awesome-rails (4.5.0.0)
+      railties (>= 3.2, < 5.0)
+    geocoder (1.2.12)
+    globalid (0.3.6)
+      activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
+    gravatar_image_tag (1.2.0)
+    handlebars_assets (0.22.0)
+      execjs (~> 2.0)
+      multi_json (~> 1.0)
+      sprockets (>= 2.0.0, < 4.0)
+      tilt (~> 1.2)
+    hashdiff (0.2.3)
+    hashie (3.4.3)
+    heroku-api (0.4.0)
+      excon (~> 0.45)
+      multi_json (~> 1.8)
+    heroku_rails_deflate (1.0.3)
+      actionpack (>= 3.2.13)
+      activesupport (>= 3.2.13)
+      rack (>= 1.4.5)
+    heroku_san (4.3.2)
+      heroku-api (>= 0.1.2)
+      json
+      rake
+    i18n (0.7.0)
+    icalendar (2.3.0)
+    jasmine (2.3.1)
+      jasmine-core (~> 2.3)
+      phantomjs
+      rack (>= 1.2.1)
+      rake
+    jasmine-core (2.3.4)
+    jasmine-jquery-rails (2.0.3)
+    jquery-rails (4.0.5)
+      rails-dom-testing (~> 1.0)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
+    json (1.8.3)
+    jwt (1.5.2)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    loofah (2.0.3)
+      nokogiri (>= 1.5.9)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
+    masonry-rails (0.2.4)
+      railties
+    mime-types (2.99)
+    mini_portile (0.6.2)
+    minitest (5.8.3)
+    multi_json (1.11.2)
+    multi_xml (0.5.5)
+    multipart-post (2.0.0)
+    nested_form (0.3.2)
+    newrelic_rpm (3.14.0.305)
+    nokogiri (1.6.6.4)
+      mini_portile (~> 0.6.0)
+    nokogumbo (1.4.1)
+      nokogiri
+    oauth (0.4.7)
+    oauth2 (1.0.0)
+      faraday (>= 0.8, < 0.10)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (~> 1.2)
+    omniauth (1.2.2)
+      hashie (>= 1.2, < 4)
+      rack (~> 1.0)
+    omniauth-facebook (3.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-github (1.1.2)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
+    omniauth-meetup (0.0.7)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.4.0)
+      oauth2 (~> 1.0)
+      omniauth (~> 1.2)
+    omniauth-twitter (1.2.1)
+      json (~> 1.3)
+      omniauth-oauth (~> 1.1)
+    orm_adapter (0.5.0)
+    pg (0.18.4)
+    phantomjs (1.9.8.0)
+    poltergeist (1.8.1)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
+    puma (2.15.3)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
+    rack (1.6.4)
+    rack-canonical-host (0.1.0)
+      addressable
+      rack (~> 1.0)
+    rack-mini-profiler (0.9.7)
+      rack (>= 1.1.3)
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rack-timeout (0.3.2)
+    rails (4.2.5)
+      actionmailer (= 4.2.5)
+      actionpack (= 4.2.5)
+      actionview (= 4.2.5)
+      activejob (= 4.2.5)
+      activemodel (= 4.2.5)
+      activerecord (= 4.2.5)
+      activesupport (= 4.2.5)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.2.5)
+      sprockets-rails
+    rails-assets-DataTables (1.10.10)
+      rails-assets-jquery (>= 1.7.0)
+    rails-assets-jquery (2.1.4)
+    rails-assets-select2 (4.0.0)
+    rails-assets-sinonjs (1.17.1)
+    rails-deprecated_sanitizer (1.0.3)
+      activesupport (>= 4.2.0.alpha)
+    rails-dom-testing (1.0.7)
+      activesupport (>= 4.2.0.beta, < 5.0)
+      nokogiri (~> 1.6.0)
+      rails-deprecated_sanitizer (>= 1.0.1)
+    rails-erd (1.5.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
+    rails-html-sanitizer (1.0.2)
+      loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.4)
+    railties (4.2.5)
+      actionpack (= 4.2.5)
+      activesupport (= 4.2.5)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+    rake (10.4.2)
+    rb-fsevent (0.9.6)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
+    rspec-collection_matchers (1.1.2)
+      rspec-expectations (>= 2.99.0.beta1)
+    rspec-core (3.4.1)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-rails (3.4.0)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
+    ruby-graphviz (1.2.2)
+    safe_yaml (1.0.4)
+    sanitize (4.0.0)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.4.4)
+      nokogumbo (= 1.4.1)
+    sass (3.4.19)
+    sass-rails (5.0.4)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
+    sentry-raven (0.15.2)
+      faraday (>= 0.7.6)
+    shoulda-matchers (3.0.1)
+      activesupport (>= 4.0.0)
+    simple_form (3.2.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+    sprockets (3.4.1)
+      rack (> 1, < 3)
+    sprockets-rails (2.3.3)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (>= 2.8, < 4.0)
+    sqlite3 (1.3.11)
+    test_after_commit (0.4.2)
+      activerecord (>= 3.2)
+    thor (0.19.1)
+    thread_safe (0.3.5)
+    tilt (1.4.1)
+    trix (0.9.7)
+      rails
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    uglifier (2.7.2)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
+    uniform_notifier (1.9.0)
+    warden (1.2.3)
+      rack (>= 1.0)
+    webmock (1.22.3)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
+    websocket-driver (0.6.3)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  active_hash
+  awesome_print
+  backbone-on-rails
+  better_errors
+  binding_of_caller
+  bootstrap-sass
+  bullet
+  byebug
+  capybara (>= 2.0.1)
+  capybara-screenshot
+  coffee-rails
+  devise (~> 3.5.0)
+  dotenv-rails
+  factory_girl_rails
+  faker
+  font-awesome-rails
+  geocoder
+  gmaps4rails
+  gravatar_image_tag
+  handlebars_assets
+  heroku_rails_deflate
+  heroku_san
+  icalendar
+  jasmine
+  jasmine-jquery-rails
+  jquery-rails
+  jquery-ui-rails
+  launchy
+  masonry-rails
+  nested_form
+  newrelic_rpm
+  omniauth-facebook
+  omniauth-github
+  omniauth-meetup
+  omniauth-twitter
+  pg
+  poltergeist
+  puma
+  quiet_assets
+  rack-canonical-host
+  rack-mini-profiler
+  rack-timeout
+  rails (= 4.2.5)
+  rails-assets-DataTables!
+  rails-assets-select2!
+  rails-assets-sinonjs!
+  rails-erd
+  rails_12factor
+  rb-fsevent
+  rspec-collection_matchers
+  rspec-rails
+  sanitize
+  sass-rails
+  sentry-raven
+  shoulda-matchers
+  simple_form
+  sqlite3
+  test_after_commit
+  trix
+  uglifier
+  webmock
+
+RUBY VERSION
+   ruby 2.3.1p112
+
+BUNDLED WITH
+   1.12.5

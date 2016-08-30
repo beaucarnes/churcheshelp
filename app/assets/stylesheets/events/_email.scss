@@ -1,0 +1,29 @@
+.event_email {
+  .mail-count {
+    margin: 20px 0;
+  }
+
+  textarea {
+    height: 275px;
+  }
+
+  label {
+    line-height: 20px;
+    margin: 0;
+  }
+
+  input[type=text], .select2-container {
+    margin-bottom: 20px;
+  }
+
+  input[type=radio], input[type=checkbox] {
+    height: 20px;
+    margin: 5px 5px 5px 0;
+  }
+
+  .recipients-selection {
+    label {
+      display: block;
+    }
+  }
+}

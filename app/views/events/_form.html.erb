@@ -1,0 +1,142 @@
+<%= simple_nested_form_for @event do |f| %>
+  <%= render 'shared/model_error_messages', model: @event %>
+
+  <h2>Basic Event Information</h2>
+  <h3>Location</h3>
+  <p><%= location_name(@event)%></p>
+  <div>
+    <%= f.hidden_field :time_zone, value: @event.time_zone %>
+    <%= f.hidden_field :location_id, value: @event.location_id %>
+  </div>
+
+  <div class="field">
+    <%= f.input :title %>
+  </div>
+
+  <div class="field">
+    <%= f.input :public_email, label: 'What email address should users contact you at with questions?' %>
+  </div>
+
+
+  <h3>Childcare</h3>
+
+  <div class="field non-bolded">
+    <%= f.label :has_childcare do %>
+      <%= f.check_box :has_childcare %> Offer childcare at this event
+    <% end %>
+
+    <p>If you are offering childcare at this event, volunteers and students requesting childcare will be prompted to enter their children's names and ages when they RSVP.</p>
+  </div>
+
+  <h3>Date and Time</h3>
+
+
+
+  <div class="event-sessions">
+    <%= f.fields_for :event_sessions do |event_sessions_form| %>
+      <span class="remove-session pull-right <% if @event.event_sessions.length == 1 || event_sessions_form.object.has_rsvps? %>hidden<% end %>">
+        <% if @event.persisted? %>
+          <%= link_to '(Remove Session)', [@event, event_sessions_form.object], method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% else %>
+          (<a href="#">Remove Session</a>)
+        <% end %>
+      </span>
+      <%= event_sessions_form.hidden_field :name, value: 'Session' %>
+
+      <div class='form-group'>
+        <%= event_sessions_form.text_field :session_date, class: 'datepicker form-control' %>
+        <%= event_sessions_form.time_select :starts_at, {:ampm => true, :minute_step => 15}, {class: "input-small start_time form-control"} %>
+        -
+        <%= event_sessions_form.time_select :ends_at, {:ampm => true, :minute_step => 15}, {class: "input-small end_time form-control"} %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <h2>Capacity</h2>
+  <div class="field">
+    <p>
+      These are the limits for the maximum number of attendees you think could fit in your event.
+    </p>
+
+    <%= f.input :student_rsvp_limit, label: 'Participant RSVP limit (required)', wrapper_html: {class: 'workshop-only'} %>
+    <%= f.input :volunteer_rsvp_limit, label: 'Volunteer RSVP limit' %>
+    <p>
+      After this event is published, you can <strong>increase</strong> these numbers, but you cannot decrease them below the number of RSVP'd attendees.
+    </p>
+    <p>
+      You may <strong>remove</strong> the volunteer limit, but it will promote everyone from the waitlist.
+    </p>
+  </div>
+
+  <h2>Event Description</h2>
+  <div class="field">
+    <p>We will automatically include the name of the course and a link to the corresponding class levels, so that should not be duplicated here.</p>
+    <p>You can use basic html, like:</p>
+    <ul class="margined">
+      <li><pre><%= "<img src='http://example.com/sponsor/logo'>" %></pre></li>
+      <li><pre><%= "<a href='http://bridgetroll.org'>Link Text</a>" %></pre></li>
+      <li><pre><%= "<h3>Littler Header</h3>\nMore text below, no blank line needed after headers" %></pre></li>
+      <li><pre><%= "<ul>\n  <li>List Item One</li>\n  <li>List Item Two</li>\n</ul>" %></pre></li>
+    </ul>
+    <p>But you don't have to put paragraph tags around everything; blank lines will do just fine.</p>
+    <%= f.trix_editor :details, as: :text, input_html: {rows: 14} %>
+  </div>
+
+  <h3>Post-RSVP Details</h3>
+  <p>The following details will be included in the confirmation & reminder emails and will appear at the bottom of the
+    event detail page <em>after</em> the student or volunteer has signed up.</p>
+  <div class="field">
+    <%= f.input :volunteer_details, label: 'Volunteer Details', input_html: {rows: 4} %>
+  </div>
+
+  <div class="field workshop-only">
+    <%= f.input :student_details, label: 'Participant Details', input_html: {rows: 4} %>
+  </div>
+
+  <% unless @event.published? %>
+    <h2>Announcement Email</h2>
+
+    <div class="field non-bolded">
+      <%= f.label :email_on_approval do %>
+        <%= label_tag do %>
+          <%= f.radio_button :email_on_approval, true %> Send the announcement email when the event is approved
+        <% end %>
+        <%= label_tag do %>
+          <%= f.radio_button :email_on_approval, false %> Let me control when to send the announcement email
+          <i>(A button will show up on your organizer console when your event is approved)</i>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @event.new_record? || @event.draft? %>
+    <h2>Ready to create your Event? Hold on a second...</h2>
+
+    <p>If you're organizing a workshop, make sure you've read over the
+      <a href="https://github.com/bridgefoundry/WorkshopCookbook/wiki/Cookbook">Organizer Cookbook</a> so you know what you're getting into.</p>
+
+    <p>Pay particular attention to the
+      <a href="https://github.com/bridgefoundry/WorkshopCookbook/wiki/Workshop-Planning-Tasks">Workshop Planning Tasks</a> page. You're already posting an event on Bridge Troll, which is a thing on that page!</p>
+
+    <div class="field">
+      <%= label_tag :coc, class: 'question' do %>
+        <strong><%= check_box_tag :coc, '1', params[:coc], data: {
+          'toggle-target' => 'coc-required',
+          'toggle-enable-when-checked' => true
+        } %>
+          I accept the <a href="http://bridgefoundry.org/code-of-conduct/" target="_blank">Code of Conduct</a> and will communicate it at the beginning of the event.
+        </strong>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <% if @event.new_record? || @event.draft? %>
+      <%= f.submit class: 'btn btn-submit coc-required', name: 'create_event', value: 'Submit Event For Approval', data: {disable_with: 'Please wait...'} %>
+      <%= f.submit class: 'btn btn-submit event-new-save-draft', name: 'save_draft', value: 'Save Draft', data: {disable_with: 'Please wait...'} %>
+    <% else %>
+      <%= f.submit class: 'btn btn-submit coc-required', data: {disable_with: 'Please wait...'} %>
+    <% end %>
+  </div>
+<% end %>

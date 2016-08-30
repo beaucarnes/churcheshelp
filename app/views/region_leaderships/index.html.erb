@@ -1,0 +1,39 @@
+<%= content_for(:header_text, "Region Leaders for #{@region.name}") %>
+
+<h3>Potential Leaders</h3>
+<%= render 'shared/user_chooser',
+           action: region_region_leaderships_path(@region),
+           select_id: '',
+           foreign_key: 'id',
+           choices: @users.collect {|u| [ u.full_name, u.id ] }
+%>
+
+<table class="table">
+  <thead>
+  <tr>
+    <td></td>
+    <td>Name</td>
+    <td>Email</td>
+    <td></td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @region.leaders.each do |leader|  %>
+    <tr>
+      <td class="avatar-column"><%= user_gravatar(leader) %></td>
+      <td><%= leader.full_name %></td>
+      <td><%= leader.email %></td>
+      <td>
+        <% if leader.id != current_user.id %>
+          <%= button_to 'Remove', region_region_leadership_path(@region, leader), method: :delete,
+                        :form => {:style => "margin-bottom : 0;"}, :class => "btn btn-mini" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= render 'shared/actions', links: [
+  ['Back', region_path(@region)]
+] %>

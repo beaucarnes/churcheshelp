@@ -1,0 +1,6 @@
+<%= content_for(:header_text, "Sign in") %>
+
+<div id="sign-in-page">
+	<%= render :partial => "shared/sign_in" %>
+	<%= render :partial => "devise/shared/links", locals: {no_sign_up: true} %>
+</div>

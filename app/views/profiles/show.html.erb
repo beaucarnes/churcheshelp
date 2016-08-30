@@ -1,0 +1,49 @@
+<%= content_for(:header_text, "Profile for #{@user.full_name}") %>
+
+<div class="user-profile">
+  <%= render 'shared/profile_gravatars' %>
+
+  <section>
+    <h3>Skills</h3>
+    <% if has_skills(@user) %>
+      <ul>
+        <% skills.each do |skill| %>
+          <%= content_tag(:li, skill_title(skill)) if @user.profile[skill_symbol(skill)] %>
+        <% end %>
+      </ul>
+    <% else %>
+      N/A
+    <% end %>
+  </section>
+
+  <% if @profile.other.present? %>
+    <section>
+      <h3>Other skills</h3>
+      <%= @profile.other %>
+    </section>
+  <% end %>
+
+  <section>
+    <h3>Bio</h3>
+    <% if @profile.bio.present? %>
+      <%= @profile.bio %>
+    <% else %>
+      N/A
+    <% end %>
+  </section>
+
+  <% if @profile.github_username.present? %>
+    <section>
+      <h3>GitHub</h3>
+      <%= link_to "https://github.com/#{@profile.github_username}", :target => "_blank" do %>
+        <i class="fa fa-github" style="margin-right: 4px;"></i><%= @profile.github_username %>
+    <% end %>
+    </section>
+  <% end %>
+
+  <section>
+    <h3>Workshop History</h3>
+
+    <%= render 'shared/rsvps', rsvps: @user.rsvps %>
+  </section>
+</div>

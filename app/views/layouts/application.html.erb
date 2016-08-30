@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <% if content_for?(:header_text) %>
+        <%= content_for(:header_text) %> - Bridge Troll
+      <% else %>
+        Bridge Troll
+      <% end %>
+    </title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <%= stylesheet_link_tag  "application", :media => "all" %>
+    <% if Rails.env.test? %>
+      <%= test_only_stylesheet %>
+    <% end %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+  </head>
+  <body>
+   <%= render 'shared/navbar' %>
+    <div class='container header-container'>
+      <% if content_for?(:header_text) %>
+        <% if content_for?(:header_link) %>
+          <h1><%= link_to yield(:header_text), yield(:header_link) %></h1>
+        <% else %>
+          <h1><%= yield(:header_text) %></h1>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="container center bridgetroll-content">
+      <% flash.each do |name, msg| %>
+        <% next if name.to_s == 'timedout' %>
+        <div class="alert alert-<%= name.to_sym == :notice ? "success" : "danger" %>">
+          <%= msg %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+      <%= yield :scripts %>
+    </div>
+    <%= debug(params) if Rails.env.development? %>
+    <footer>Created and maintained by fruitful.software</footer>
+   <%= render 'shared/sign_in_dialog' %>
+  </body>
+</html>

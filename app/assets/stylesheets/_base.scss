@@ -1,0 +1,289 @@
+@import "constants";
+@import "bootstrap/variables";
+@import 'https://fonts.googleapis.com/css?family=Lalezar';
+
+body {
+  font-family: 'AmbleLight', sans-serif;
+  background-image: image_url('background.png');
+}
+
+form {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+  line-height: 120%;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Lalezar', sans-serif;
+  font-size: 42px;
+  color: $red-color;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 32px;
+  }
+
+  a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: $red-color;
+  }
+}
+
+h2 {
+  font-family: 'AmbleRegular', sans-serif;
+  font-size: 24px;
+  line-height: 150%;
+}
+
+h3 {
+  font-family: 'AmbleLight', sans-serif;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+h4 {
+  font-family: 'AmbleRegular', sans-serif;
+  font-size: 14px;
+}
+
+h5 {
+  font-family: 'AmbleBold', sans-serif;
+  font-size: 14px;
+}
+
+strong {
+  font-family: 'AmbleBold', sans-serif;
+  font-weight: normal;
+}
+
+ul {
+  padding: 0;
+}
+
+p {
+  font-family: 'AmbleLight', sans-serif;
+  line-height: 140%;
+  font-size: 15px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+table tr td .btn {
+  margin: 0 20px;
+}
+
+td.wide {
+  width: 20%;
+}
+
+@media (max-width: $screen-xs-max) {
+  .hide-on-phone {
+    display: none !important;
+  }
+
+  .btn, input[type=submit].btn {
+    display: block;
+    margin-bottom: 4px;
+  }
+  input[type=submit].btn {
+    width: 100%;
+  }
+}
+
+.btn, .btn:focus {
+  font-size: 16px;
+  font-family: 'AmbleLight';
+  padding: 9px 16px;
+  border-radius: 0;
+
+  background: $darkblue-color;
+  color: white;
+  border: none;
+  text-shadow: none;
+  box-shadow: none;
+
+  &:hover {
+    background-color: #e6e6e6;
+  }
+
+  &:disabled, &:disabled:hover {
+    background: #eee;
+    color: #868686;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background: $blue-color;
+  text-shadow: none;
+}
+
+.btn-submit {
+  background: darken($green-color, 20%);
+
+  &:hover {
+    color: white;
+    background: $green-color;
+  }
+}
+
+.btn-danger {
+  background: $red-color;
+
+  &:hover {
+    color: white;
+    background: lighten($red-color, 20%);
+  }
+}
+
+.btn-info {
+  background: $darkgray-color;
+
+  &:hover {
+    color: white;
+    background: lighten($darkgray-color, 20%);
+  }
+}
+
+.remove-organizer form {
+  margin-bottom: 0;
+}
+
+.ui-datepicker {
+  z-index: 1031 !important;
+}
+
+.header-container {
+  margin-top: 30px;
+
+  @media (max-width: 980px) {
+    margin-top: 20px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+}
+
+.bridgetroll-content {
+  margin: 0 auto;
+  background-color: $content-background-color;
+  padding: 20px;
+
+  .first {
+    margin-bottom: 20px;
+  }
+}
+
+.session-display {
+  .event-session {
+    margin: 0 40px 30px 0;
+    display: inline-block;
+
+    .date {
+      font-weight: bold;
+    }
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul.margined {
+  margin: 0 0 10px 25px
+}
+
+ul.bulleted {
+  list-style-type: circle;
+}
+
+.actions {
+  margin: 20px 0 0 0;
+  &.no-margin {
+    margin: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    @media (max-width: $screen-xs-max) {
+      display: block;
+      margin: 0;
+    }
+  }
+}
+
+.event-sessions {
+  .fields {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px 0;
+
+    .datepicker, .input-small {
+      width: auto;
+    }
+  }
+
+  .add_nested_fields {
+    outline: none;
+    text-decoration: none;
+  }
+
+  .form-group {
+    .form-control {
+      display: inline-block;
+    }
+    margin-bottom: 10px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.external-link {
+  font-size: 8pt;
+  color: darkgrey;
+}
+
+.gmaps4rails_map {
+  height: 300px;
+}
+
+.location-display .gmaps4rails_map {
+  width: 100%;
+}
+
+.food-preferences {
+  h2 {
+    margin: 20px 0 5px 0;
+  }
+  li {
+    list-style-type: disc;
+    font-size: 18px;
+  }
+}
+
+.checkbox_row {
+  label {
+    display: inline;
+    margin-left: 5px;
+  }
+}
+
+label {
+  font-weight: normal;
+}
+
+@media (max-width: $screen-xs-max) {
+  .js-match-height-item {
+    min-height: 0 !important;
+  }
+}

@@ -1,0 +1,73 @@
+@import "bootstrap/variables";
+
+.welcome-box {
+  width: 700px;
+  margin: 0 auto 10px auto;
+  padding: 15px;
+
+  @media (max-width: $screen-xs-max) {
+    box-sizing: border-box;
+    padding: 8px;
+    width: 100%;
+  }
+}
+
+.welcome-content {
+  margin: 0 3em;
+  display: table;
+
+  @media (max-width: $screen-xs-max) {
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.welcome-message {
+  display: table-cell;
+  vertical-align: middle;
+
+  h2 {
+    font-size: 18px;
+    text-align: center;
+    & + h2 {
+      margin-top: 10px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 14px;
+    }
+  }
+}
+
+.troll {
+  display: inline-block;
+  padding-right: 20px;
+  img {
+    height: 145px;
+    width: 190px;
+    max-width: 190px;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
+
+.about {
+  h2 {
+    font-family: 'AmbleBold', sans-serif;
+    margin: 20px 0 10px 0;
+  }
+  h3 {
+    font-size: 20px;
+    font-family: 'AmbleRegular', sans-serif;
+    margin: 10px 0;
+  }
+  ul {
+    font-size: 16px;
+    li {
+      list-style-type: disc;
+      padding-bottom: 10px;
+    }
+  }
+}

@@ -1,0 +1,293 @@
+@import "bootstrap/mixins/clearfix";
+@import "constants";
+
+$linux-color: rgb(215, 255, 215);
+$osx-color: rgb(215, 215, 255);
+$windows-color: rgb(255, 215, 215);
+
+$bridgetroll-section-border-color: #BBB;
+$bridgetroll-section-width-wide: 214px;
+$bridgetroll-section-width-narrow: 175px;
+
+body.section-organizer-projector-mode {
+  .navbar, .header-container, .organizer-breadcrumb, .hide-on-projector {
+    display: none;
+  }
+
+  .bridgetroll-section {
+    width: $bridgetroll-section-width-wide;
+  }
+}
+
+.section-organizer {
+  min-height: 500px;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 15px;
+  position: relative;
+
+  .actions {
+    @include clearfix;
+    margin: 0 0 10px 0;
+    display: block;
+
+    button i {
+      margin-right: 5px;
+    }
+  }
+}
+
+.auto-assign-reminder {
+  width: 700px;
+  position: absolute;
+  font-size: 28px;
+  line-height: 32px;
+  top: 150px;
+  left: 210px;
+  padding: 15px;
+  background-color: $orange-color;
+  border: 5px solid darken($orange-color, 20%);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.section-checkin-highlight-legend {
+  float: right;
+  display: inline-block;
+
+  .dropdown {
+    display: inline-block;
+
+    li {
+      width: 100%;
+    }
+  }
+}
+
+.student-os-key {
+  float: right;
+
+  .swatch {
+    height: 10px;
+    width: 10px;
+    margin-left: 20px;
+    margin-right: 5px;
+    display: inline-block;
+
+    &.linux   { background-color: $linux-color; }
+    &.osx     { background-color: $osx-color; }
+    &.windows { background-color: $windows-color; }
+  }
+}
+
+.bridgetroll-section-level {
+  vertical-align: top;
+  display: inline-block;
+  width: $bridgetroll-section-width-narrow;
+  margin-right: 10px;
+
+  .section-organizer-projector-mode & {
+    width: $bridgetroll-section-width-wide;
+  }
+
+  &.level0 {
+    display: inline-block;
+
+    .section-organizer-projector-mode & {
+      display: none;
+    }
+  }
+}
+
+.bridgetroll-section-title {
+  margin: -5px 0 5px 0;
+  padding: 5px 5px 5px 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: white;
+  background-color: #555;
+  border-bottom: 1px solid $bridgetroll-section-border-color;
+
+  &.special {
+    background-color: #AAA;
+
+    .title-text {
+      width: 100%;
+    }
+  }
+
+  &.header {
+    margin-bottom: 15px;
+    color: white;
+    .info {
+      float: right;
+      color: white;
+    }
+
+    .section-organizer-projector-mode & {
+      display: none;
+    }
+  }
+
+  .title-text {
+    display: inline-block;
+    width: 70%;
+    width: calc(100% - 45px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+$attendee-height: 20px;
+
+.bridgetroll-badge {
+  vertical-align: top;
+  height: $attendee-height;
+  line-height: $attendee-height + 2px;
+  width: $attendee-height;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 0 5px;
+  text-align: center;
+  background-color: #CCC;
+  color: white;
+
+  &.level0 { background-color: #777; }
+}
+
+.bridgetroll-section {
+  border: 1px solid $bridgetroll-section-border-color;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  vertical-align: top;
+
+  .bridgetroll-section-title .actions {
+    display: inline-block;
+    float: right;
+    margin: 0;
+
+    i {
+      font-size: 1.5em;
+    }
+
+    i, span {
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.destroy:hover {
+        color: #ff6167;
+      }
+
+      &.edit:hover {
+        color: rgb(71, 213, 156);
+      }
+    }
+  }
+
+  .students:before, .volunteers:before {
+    font-weight: bold;
+    display: block;
+    margin-left: 5px;
+  }
+
+  .students:before {
+    content: 'Students';
+  }
+
+  .volunteers:before {
+    content: 'Volunteers';
+  }
+
+  .students, .volunteers {
+    margin: 0;
+    min-height: 50px;
+  }
+
+  .volunteers:after {
+    margin: 8px 0;
+    content: ' ';
+    display: block;
+    border-bottom: 1px solid $bridgetroll-section-border-color;
+  }
+
+  .attendee {
+    height: $attendee-height + 4px;
+    line-height: $attendee-height;
+    padding: 2px 0;
+
+    .showing-os & {
+      &.linux   { background-color: $linux-color; }
+      &.osx     { background-color: $osx-color; }
+      &.windows { background-color: $windows-color; }
+    }
+
+    .name {
+      display: inline-block;
+      overflow: hidden;
+      width: 70%;
+      width: calc(100% - 55px);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .info {
+      float: right;
+      line-height: $attendee-height;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    &.no-show {
+      color: #BBB;
+    }
+
+    &.role3 {
+      font-style: italic;
+    }
+
+    &.dragging {
+      position: absolute;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(50, 50, 50, 0.75);
+      padding: 2px 5px 2px 0;
+      width: $bridgetroll-section-width-narrow;
+
+      .section-organizer-projector-mode & {
+        width: $bridgetroll-section-width-wide;
+      }
+
+      .info {
+        display: none;
+      }
+    }
+  }
+}
+
+.bridgetroll-attendee-detail {
+  .role {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .detail-header {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .detail {
+    margin-bottom: 30px;
+  }
+}
+
+body:not(.section-organizer-projector-mode) .bridgetroll-section .bridgetroll-section-title {
+  background-color: #555;
+}
+
+.level-blue { background-color: $level-blue; }
+.level-green { background-color: $level-green; }
+.level-gold { background-color: $level-gold; }
+.level-orange { background-color: $level-orange; }
+.level-purple { background-color: $level-purple; }
+.level-pink { background-color: $level-pink; }

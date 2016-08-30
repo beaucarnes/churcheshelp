@@ -1,0 +1,100 @@
+@import "bootstrap/variables";
+@import "constants";
+
+.location-display {
+  margin-bottom: 20px;
+}
+
+.public-email {
+  font-weight: bold;
+}
+
+.attendees {
+  margin: 0 0 15px 0;
+
+  .attendee {
+    padding: 5px 0;
+    border-top: 1px solid #ccc;
+
+    img {
+      margin-right: 10px;
+    }
+
+    .no-show, .waitlisted {
+      color: #BBB;
+    }
+
+    .waitlist-number {
+      line-height: 38px;
+    }
+  }
+}
+
+.rsvp-actions {
+  margin-bottom: 20px;
+
+  .rsvp-text {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .btn {
+    margin-top: 3px;
+  }
+}
+
+.details {
+  word-wrap: break-word;
+  line-height: 140%;
+  font-size: 15px;
+
+  h2 {
+    margin-top: 20px;
+  }
+
+  h3 {
+    margin: 20px 0 5px 0;
+    font-family: 'AmbleRegular', sans-serif;
+  }
+
+  ul {
+    margin: 0 0 10px 25px;
+    list-style-type: disc;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.critical-details {
+  margin-bottom: 20px;
+  font-size: 18px;
+
+  a {
+    text-decoration: none;
+  }
+
+  div {
+    &:first-child {
+      padding-bottom: 10px;
+      font-size: 30px;
+      line-height: 30px;
+      font-weight: 600;
+
+      &::before {
+        content: "@";
+        color: $darkgray-color;
+      }
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    div {
+      &:first-child {
+        font-size: 24px;
+      }
+    }
+    overflow: hidden;
+  }
+}

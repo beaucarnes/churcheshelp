@@ -1,0 +1,50 @@
+<%= simple_nested_form_for @ministry do |f| %>
+  <%= render 'shared/model_error_messages', model: @ministry %>
+  <h2>Basic Ministry Information</h2>
+  <h3>Location</h3>
+  <p><%= location_name(@ministry)%></p>
+  <div>
+    <%= f.hidden_field :location_id, value: @ministry.location_id %>
+    <%= f.hidden_field :current_state, value: :draft %>
+
+  </div>
+
+  <div class="field">
+    <%= f.input :title %>
+  </div>
+
+  <div class="field">
+    <%= f.input :when %>
+  </div>
+
+  <h2>Ministry Description</h2>
+  <div class="field">
+
+    <%= f.trix_editor :details, as: :text, input_html: {rows: 14} %>
+  </div>
+
+
+
+  <% if @ministry.new_record? || @ministry.draft? %>
+
+    <div class="field">
+      <%= label_tag :coc, class: 'question' do %>
+        <strong><%= check_box_tag :coc, '1', params[:coc], data: {
+          'toggle-target' => 'coc-required',
+          'toggle-enable-when-checked' => true
+        } %>
+          I accept the <a href="http://bridgefoundry.org/code-of-conduct/" target="_blank">Code of Conduct</a> and will communicate it at the beginning of the event.
+        </strong>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <% if @ministry.new_record? || @ministry.draft? %>
+      <%= f.submit class: 'btn btn-submit coc-required', name: 'create_ministry', value: 'Submit Ministry For Approval', data: {disable_with: 'Please wait...'} %>
+      <%= f.submit class: 'btn btn-submit event-new-save-draft', name: 'save_draft', value: 'Save Draft', data: {disable_with: 'Please wait...'} %>
+    <% else %>
+      <%= f.submit class: 'btn btn-submit coc-required', data: {disable_with: 'Please wait...'} %>
+    <% end %>
+  </div>
+<% end %>

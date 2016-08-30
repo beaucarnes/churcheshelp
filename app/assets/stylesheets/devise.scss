@@ -1,0 +1,59 @@
+@import "bootstrap/variables";
+
+.action {
+	display:inline-block;
+}
+
+.modal-header, .modal-footer {
+	background-image: image_url("background.png");
+}
+
+.sign-in {
+  h3 {
+    margin: 5px 0 10px 0;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .login-option:last-child {
+      margin-top: 20px;
+    }
+  }
+}
+
+.external-auth {
+  $auth-button-width: 75px;
+  $auth-button-margin: 5px;
+  text-align: left;
+  #sign_in_dialog & {
+    text-align: center;
+    @media (min-width: $screen-xs-max) {
+      width: ($auth-button-width + $auth-button-margin) * 2 + 10;
+      margin: 0 auto;
+    }
+  }
+  margin-left: 0;
+
+  li {
+    margin: 0 $auth-button-margin $auth-button-margin 0;
+    min-width: $auth-button-width;
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block;
+  }
+  &.external-auth-existing li {
+    @media (max-width: $screen-xs-max) {
+      display: block;
+    }
+  }
+
+  a, a:link, a:visited {
+    text-decoration: none;
+  }
+
+  i {
+    font-size: 48px;
+    display: block;
+  }
+}

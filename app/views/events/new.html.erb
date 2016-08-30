@@ -1,0 +1,21 @@
+<%= content_for(:header_text, 'Organize an Event') %>
+
+<div class="row">
+  <div class="col-md-8 event-form">
+    <h2 class="mb-10-only">New Event</h2>
+
+    <p>All events hosted on Churches Help must:</p>
+    <ul class="margined bulleted">
+      <li><strong>Be free</strong></li>
+      <li><strong>Help the community in some way.</strong></li>
+    </ul>
+
+    
+    <%= render 'form' %>
+  </div>
+</div>
+
+<%= render 'shared/actions', links: [
+  ['Back', events_path],
+  ['Manage Locations', locations_path]
+] %>

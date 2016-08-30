@@ -1,0 +1,145 @@
+<%= content_for(:header_text, @event.title) %>
+
+<% if @organizer || @checkiner %>
+  <div class="organizer-breadcrumb">
+    You are <%= @organizer ? 'an organizer of' : 'a checkiner for' %> this event!
+
+    <div class="header-actions">
+      <% if @organizer %>
+        <%= link_to 'Edit', edit_event_path(@event), class: "btn fa-before fa-edit" %>
+        <%= link_to 'Organizer Console', event_organizer_tools_path(@event), class: "btn fa-before fa-bullhorn" %>
+      <% elsif @checkiner %>
+        <%= link_to 'Checkin Console', event_event_sessions_path(@event), class: "btn" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="critical-details">
+      <% if @event.location %>
+        <%= link_to pretty_print_address(@event.location), location_map_link(@event.location) %>
+      <% else %>
+        This event currently has no location!
+      <% end %>
+    </div>
+
+    <div class='session-display'>
+      <% @event.event_sessions.each do |event_session| %>
+        <div class='event-session'>
+          <h2 class='name'>Date</h2>
+
+          <div class='date'><%= formatted_session_date(event_session) %></div>
+          <div class='time'>Start time: <%= formatted_session_time(event_session, :starts_at) %></div>
+          <div class='time'>End time: <%= formatted_session_time(event_session, :ends_at) %></div>
+          <div class='ical'>
+            <%= link_to event_event_session_path(@event, event_session, format: :ics), download: "#{event_session.id}.ics" do %>
+              <i class="fa fa-calendar-plus-o"></i> Export to iCal
+            <% end %>
+          </div>
+          <div class='gcal'>
+            <%= link_to google_calendar_event_url(@event, event_session), target: "_blank" do %>
+              <i class="fa fa-calendar-plus-o"></i> Export to Google Calendar
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="details">
+      <%= simple_format_with_html(@event.details) %>
+      <% if current_user %>
+        <% if @event.volunteer?(current_user) || @organizer %>
+          <h2>Volunteer Details</h2>
+          <%= simple_format_with_html(@event.volunteer_details) %>
+        <% end %>
+
+        <% if @event.allow_student_rsvp? && (@event.student?(current_user) || @organizer) %>
+          <h2>Student Details</h2>
+          <%= simple_format_with_html(@event.student_details) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-4">
+
+    <div class='location-display'>
+      <% if @event.location.present? && !Rails.env.test? %>
+        <%= render "shared/map", location: @event.location %>
+      <% end %>
+    </div>
+
+    <% unless @event.historical? || @event.past? %>
+      <div class='rsvp-actions'>
+        <% if user_signed_in? %>
+          <%= render 'shared/rsvp_actions', event: @event %>
+        <% else %>
+          <%= render 'shared/rsvp_actions_unauthenticated', event: @event, stay_on_event: false %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if user_signed_in? && @event.public_email.present? %>
+      <p class='public-email'>Questions? Email <%= mail_to @event.public_email %></p>
+    <% end %>
+
+    <div class="organizers">
+      <h3>Organized By:</h3>
+      <ul class="attendees">
+        <% if organizer_list.any? %>
+          <% organizer_list.each do |organizer| %>
+            <li class='attendee'><%= user_gravatar(organizer) %><%= link_to organizer.full_name, organizer.profile_path %></li>
+          <% end %>
+        <% else %>
+          <li>No Organizer Assigned</li>
+        <% end %>
+      </ul>
+    </div>
+    <h3><%= pluralize(@event.checked_in_rsvps(Role::VOLUNTEER).count, "volunteer") %>!</h3>
+    <% if @ordered_rsvps[Role::VOLUNTEER].none? %>
+      <div class="mb20">
+        No volunteers are currently signed up for this event.
+      </div>
+    <% else %>
+      <ul class="attendees">
+        <% @ordered_rsvps[Role::VOLUNTEER].each do |rsvp| %>
+          <li class='attendee'><%= user_gravatar(rsvp.loaded_user) %><%= link_to rsvp.loaded_user.full_name, rsvp.loaded_user.profile_path, class: rsvp_class(rsvp) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% if @event.allow_student_rsvp? %>
+      <h3><%= pluralize(@event.checked_in_rsvps(Role::STUDENT).count, "student") %>!</h3>
+      <% if @ordered_rsvps[Role::STUDENT].none? %>
+        <div class="mb20">
+          No students are currently signed up for this event.
+        </div>
+      <% else %>
+        <ul class="attendees">
+          <% @ordered_rsvps[Role::STUDENT].each do |rsvp| %>
+            <li class='attendee'><%= user_gravatar(rsvp.loaded_user) %><%= link_to rsvp.loaded_user.full_name, rsvp.loaded_user.profile_path, class: rsvp_class(rsvp) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+
+    <% if @ordered_waitlist_rsvps[Role::VOLUNTEER].any? %>
+        <h3><%= @ordered_waitlist_rsvps[Role::VOLUNTEER].length %> waitlisted <%= "volunteer".pluralize(@ordered_waitlist_rsvps[Role::VOLUNTEER]) %>!</h3>
+        <ul class="attendees">
+          <% @ordered_waitlist_rsvps[Role::VOLUNTEER].each do |rsvp| %>
+              <li class='attendee'><%= user_gravatar(rsvp.loaded_user) %><%= link_to rsvp.loaded_user.full_name, rsvp.loaded_user.profile_path %><span class='waitlist-number pull-right'>#<%= rsvp.waitlist_position %></span></li>
+          <% end %>
+        </ul>
+    <% end %>
+
+    <% if @ordered_waitlist_rsvps[Role::STUDENT].any? %>
+      <h3><%= @ordered_waitlist_rsvps[Role::STUDENT].length %> waitlisted <%= "student".pluralize(@ordered_waitlist_rsvps[Role::STUDENT]) %>!</h3>
+      <ul class="attendees">
+        <% @ordered_waitlist_rsvps[Role::STUDENT].each do |rsvp| %>
+          <li class='attendee'><%= user_gravatar(rsvp.loaded_user) %><%= link_to rsvp.loaded_user.full_name, rsvp.loaded_user.profile_path %><span class='waitlist-number pull-right'>#<%= rsvp.waitlist_position %></span></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

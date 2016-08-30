@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= form_tag(action, method: :post)  do %>
+      <%= select(select_id,
+                 foreign_key,
+                 choices,
+                 {include_blank: ''},
+                 class: 'form-control') %>
+      <script>
+        var options = {};
+        <% if defined?(url) %>
+          _.extend(options, {
+            minimumInputLength: 3,
+            ajax: {
+              url: '<%= url %>',
+              dataType: 'json',
+              delay: 250,
+              processResults: function (data, page) {
+                return {
+                  results: data
+                };
+              },
+              cache: true
+            }
+          });
+        <% end %>
+        $('#<%= select_id %>_<%= foreign_key %>').select2(options);
+      </script>
+      <%= submit_tag "Assign", class: "btn btn-primary", style: 'margin: 10px 0;' %>
+    <% end %>
+  </div>
+</div>

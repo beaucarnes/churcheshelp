@@ -1,0 +1,30 @@
+.form-date {
+  label {
+    display: block;
+  }
+
+  select.form-control {
+    width: 33%;
+    display: inline-block;
+  }
+}
+
+footer {
+  display: none;
+
+  .trollholder {
+    height: 113px;
+    width: 224px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  img {
+    box-sizing: border-box;
+    position: absolute;
+    height: 133px;
+    width: 224px;
+    bottom: -19px;
+  }
+}

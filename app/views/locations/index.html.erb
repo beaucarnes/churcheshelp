@@ -1,0 +1,9 @@
+<%= content_for(:header_text, 'Listing locations') %>
+
+<%= render 'shared/locations_table', locations: @locations %>
+
+<%= render 'shared/actions', links: [
+  user_signed_in? ? ['New Location', new_location_path] : nil,
+  ['Regions', regions_path],
+  ['Events', events_path]
+] %>

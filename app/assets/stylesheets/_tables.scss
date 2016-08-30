@@ -1,0 +1,189 @@
+@import "bootstrap/variables";
+
+table {
+  td.avatar-column {
+    width: 60px;
+    text-align: center;
+  }
+}
+
+table.checkins {
+  th.checkins-name { width: 50%; }
+  th.checkins-role { width: 20%; }
+  th.checkins-action { width: 30%; }
+
+  tbody td {
+    img {
+      margin-right: 10px;
+    }
+
+    vertical-align: middle;
+
+    form {
+      margin: 0;
+    }
+
+    .fa-check-square-o {
+      margin-left: 20px;
+      margin-right: 5px;
+    }
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .checkins-table-container {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  table.checkins {
+    width: 100% !important;
+    display: block;
+    td {
+      text-align: center;
+    }
+    th.checkins-action, td.checkins-action {
+      font-size: 8px;
+    }
+    td .user-name {
+      display: block;
+      margin: 0 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 90px; // 100% doesn't work. sad :(
+    }
+    tr td .btn {
+      margin: 0;
+      width: 100%;
+      font-size: 10px;
+      padding: 5px;
+      height: 44px;
+    }
+    tbody td {
+      img {
+        margin: 0;
+      }
+      .fa-check-square-o {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+table.survey-results {
+  td {
+    white-space: pre-wrap;
+  }
+  th:nth-child(1) { width: 30% }
+  th:nth-child(2) { width: 40% }
+  th:nth-child(3) { width: 30% }
+}
+
+table.external-events {
+  th.organizers {
+    width: 20%;
+  }
+}
+
+table.attendees {
+  th.attendee-role { width: 10%; }
+  th.attendee-waitlisted { width: 10%; }
+
+  tbody td {
+    img {
+      margin-right: 10px;
+    }
+
+    vertical-align: middle;
+  }
+}
+
+table.volunteer-roles {
+  th { width: 20%; }
+
+  tbody td {
+    img {
+      margin-right: 10px;
+    }
+
+    vertical-align: middle;
+  }
+}
+
+table.sent-emails {
+  .email-body {
+    white-space: pre-wrap;
+  }
+}
+
+table.responsive-table {
+  @media (max-width: $screen-xs-max) {
+    border: none;
+    thead {
+      display: none;
+    }
+
+    &.table-striped tbody > tr {
+      background-color: transparent;
+    }
+
+    tbody td {
+      border-left-width: 1px;
+    }
+
+    td:last-child {
+      border-right-width: 1px;
+    }
+
+    // The added specificity here is mostly to undo the work of bootstrap's tabling
+    tbody > tr > td, tbody > tr > th {
+      background-color: #f9f9f9;
+    }
+    tbody > tr > td:first-child {
+      background-color: rgba(196, 213, 209, 0.44);
+    }
+    tbody:last-child tr:last-child > td:first-child {
+      border-bottom-left-radius: 0;
+    }
+    td {
+      display: block;
+      border-left: 1px solid #bfbfbf;
+      border-right: 1px solid #bfbfbf;
+    }
+    td[data-label]:before {
+      content: attr(data-label);
+      margin-right: 4px;
+    }
+    tr td:first-child {
+      margin-top: 10px;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+    tr td:last-child {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom: 1px solid #bfbfbf;
+    }
+  }
+}
+
+// Use font-awesome icons for dataTable sorting instead of bootstrap
+table.dataTable thead {
+  .sorting:after, .sorting_asc:after, .sorting_desc:after {
+    font-family: 'FontAwesome';
+    opacity: 1;
+  }
+
+  .sorting:after {
+    opacity: 0.3;
+    content: "\f0dc"; /* fa-sort */
+  }
+
+  .sorting_asc:after {
+    content: "\f0de"; /* fa-sort-asc */
+  }
+
+  .sorting_desc:after {
+    content: "\f0dd"; /* fa-sort-desc */
+  }
+}

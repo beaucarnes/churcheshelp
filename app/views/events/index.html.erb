@@ -1,0 +1,49 @@
+<% unless user_signed_in? %>
+  <%= render 'shared/welcome' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class='upcoming-events'>
+      <label class="region-select-container form-inline">
+        Filter: <%= select_tag :region,
+                               options_from_collection_for_select(@event_regions, "id", "name"),
+                               prompt: "All Regions",
+                               class: 'region-select form-control' %>
+      </label>
+      <h1>Upcoming events</h1>
+
+      <% if @events.empty? %>
+        <h2>There are currently no upcoming events.</h2>
+      <% end %>
+      <% @events.each do |event| %>
+        <%= render 'upcoming_event', event: event %>
+      <% end %>
+    </div>
+
+    <p>
+      Subscribe to our calendar via: 
+      <%= link_to "RSS", feed_events_path(format: :rss) %>
+      <%= link_to "Atom", feed_events_path(format: :atom) %>
+    </p>
+
+    <% if user_signed_in? %>
+      <h1>Get Involved</h1>
+      <% links = [
+        ['Manage Locations', locations_path],
+        ['Manage Regions', regions_path]
+      ] %>
+      <% if current_user.admin? %>
+        <% links << ['Manage External Events', external_events_path] %>
+        <% links << ['Publish Unpublished Events', unpublished_events_path] %>
+      <% end %>
+      <%= render 'shared/actions', links: links, additional_class: 'no-margin' %>
+    <% end %>
+
+    <div class='past-events'>
+      <h1>Past events</h1>
+      <%= render 'shared/events_table', events: @past_events %>
+
+    </div>
+  </div>
+</div>

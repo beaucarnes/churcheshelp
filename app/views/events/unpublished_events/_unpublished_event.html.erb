@@ -1,0 +1,31 @@
+<div class='event-card event-<%= event.id %>'>
+  <div class='event-title'>
+    <%= link_to event.title, event %>
+  </div>
+  <div class='event-times'>
+    <% event.event_sessions.each_with_index do |session, index| %>
+      <i class='fa fa-calendar'></i><%= formatted_session_fancy_date(session) %><% if index < event.event_sessions.length - 1 %><br /><% end %>
+    <% end %>
+  </div>
+  <div class='event-location'>
+    <% if event.location %>
+      <i class='fa fa-map-marker'></i><%= event.location.name %>,
+      <%= [event.location.city, event.location.state].select(&:present?).join(', ') %>
+    <% end %>
+  </div>
+  <div class='event-actions'>
+    <% if event.location %>
+      <% if event.email_on_approval %>
+        <%= button_to 'Publish', unpublished_event_publish_path(event, send_mail: true), class: 'btn', method: :post,
+                      data: {confirm: "Are you sure? This will email #{pluralize(@region_user_counts[event.location.region.id], 'member')} of #{event.location.region.name}"} %>
+      <% else %>
+        <%= button_to 'Publish', unpublished_event_publish_path(event), class: 'btn', method: :post,
+                      data: {confirm: "Are you sure? The event will start showing for all users, and no one will be emailed since the event organizers have chosen to manually send the announcement email."} %>
+      <% end %>
+    <% else %>
+      <button class="btn" disabled>No Location - Can't Publish!</button>
+    <% end %>
+    <%= button_to 'Flag as Spam', unpublished_event_flag_path(event), class: 'btn btn-danger', method: :post,
+                  data: {confirm: "Are you sure? This will remove this event from the approval page, and flag #{event.organizers.first.full_name} as a spammer so that all subsequent events they create will immediately be flagged as spam."} %>
+  </div>
+</div>
