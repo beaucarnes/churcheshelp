@@ -3,9 +3,9 @@
   <head>
     <title>
       <% if content_for?(:header_text) %>
-        <%= content_for(:header_text) %> - Bridge Troll
+        <%= content_for(:header_text) %> - Churches Help
       <% else %>
-        Bridge Troll
+        Churches Help
       <% end %>
     </title>
     <!--[if lt IE 9]>
@@ -42,8 +42,8 @@
       <%= yield %>
       <%= yield :scripts %>
     </div>
-    <%= debug(params) if Rails.env.development? %>
-    <footer>Created and maintained by fruitful.software</footer>
+    <!-- <%= debug(params) if Rails.env.development? %> -->
+    <footer>Created and maintained by <a href='http://fruitful.software' target='_blank'>fruitful.software</a></footer>
    <%= render 'shared/sign_in_dialog' %>
   </body>
 </html>

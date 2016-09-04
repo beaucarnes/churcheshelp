@@ -11,13 +11,15 @@ class Events::UnpublishedEventsController < ApplicationController
       hsh[region.id] = region.users.length
     end
     @events = Event.upcoming.pending_approval.where(spam: false)
+    @ministries = Ministry.pending_approval.where(spam: false)
+
   end
 
   def publish
     @event.update_attributes(current_state: :published)
     if @event.email_on_approval
       EventMailer.new_event(@event).deliver_now 
-      @event.update_attribute(:announcement_email_sent_at, DateTime.now)
+      @event.update_attribute(:announcement_email_sent_at, DateTime.now) unless params[:ministry]
     end
     redirect_to @event, notice: "This event has been published. Now everyone in the world can see it!"
   end
@@ -31,6 +33,7 @@ class Events::UnpublishedEventsController < ApplicationController
   private
 
   def find_event
-    @event = Event.find(params[:unpublished_event_id])
+
+    @event = params[:ministry] ? Ministry.find(params[:unpublished_event_id]) : Event.find(params[:unpublished_event_id])
   end
 end

@@ -24,4 +24,21 @@ class Ministry < ActiveRecord::Base
   def organizer?(user)
     user.location_id == self.location_id && user.location_admin
   end
+
+  def self.published_or_organized_by(user = nil)
+    return self.published unless user
+ 
+    if user.admin?
+      where(spam: false)
+    else
+      if user.location_admin
+
+        return where('location_id = ? OR (current_state = ?)', user.location_id, Event.current_states[:published])
+
+      else
+        return self.published
+        
+      end
+    end
+  end
 end

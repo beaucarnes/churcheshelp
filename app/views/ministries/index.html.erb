@@ -1,0 +1,34 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <div class='upcoming-events'>
+      <label class="region-select-container form-inline">
+        Filter: <%= select_tag :region,
+                               options_from_collection_for_select(@ministry_regions, "id", "name"),
+                               prompt: "All Regions",
+                               class: 'region-select form-control' %>
+      </label>
+      <h1>Ongoing Ministries</h1>
+
+      <% if @ministries.empty? %>
+        <h2>There are currently no ongoing ministries.</h2>
+      <% end %>
+      <% @ministries.each do |ministry| %>
+        <%= render 'upcoming_ministry', ministry: ministry %>
+      <% end %>
+    </div>
+
+
+    <% if user_signed_in? %>
+      <% links = [
+        ['Events', events_path],
+        ['Churches', locations_path]
+      ] %>
+      <% if current_user.admin? %>
+        <% links << ['Publish Unpublished Events / Ministries', unpublished_events_path] %>
+      <% end %>
+      <%= render 'shared/actions', links: links, additional_class: 'no-margin' %>
+    <% end %>
+
+  </div>
+</div>

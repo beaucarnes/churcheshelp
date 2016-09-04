@@ -30,7 +30,7 @@
   display: inline-block;
   vertical-align: top;
   box-sizing: border-box;
-  width: 45%;
+  width: 100%;
 
   &.unpublished {
     opacity: .4;
@@ -60,9 +60,12 @@
     }
     margin-right: 6px;
   }
+  .event-details {
+    font-size: 16px;
+  }
 
   .event-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
   }
 
@@ -70,9 +73,12 @@
     padding-bottom: 8px;
   }
 
+  
+
+
+
   .event-actions {
     margin-top: 9px;
-    text-align: center;
     .btn {
       margin-top: 3px;
     }

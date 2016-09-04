@@ -4,11 +4,5 @@
   </p>
 <% end %>
 
-There will be <%= pluralize(@event.event_sessions.count, 'session') %>:
-<ul>
-  <% @event.event_sessions.each do |s| %>
-    <li><%= pretty_print_session(s) %></li>
-  <% end %>
-</ul>
 
 <p>Visit the <%= link_to 'event page', event_url(@event) %> for more information about the event.</p>

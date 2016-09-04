@@ -1,51 +1,46 @@
-<div class='event-card js-match-height-item <% unless event.published? %>unpublished<% end %>' data-region-id="<%= event.region.try(:id) %>">
+<div class='event-card  <% unless event.published? %>unpublished<% end %>' data-region-id="<%= event.region.try(:id) %>">
   <% unless event.published? %>
     <div class='pull-right unpublished-indicator'><%= state_display(event) %></div>
   <% end %>
-  <div class='event-title'>
-    <%= link_to event.title, event %>
-    <%= external_links(event) %>
-  </div>
-  <div class='event-times'>
-    <% event.event_sessions.each_with_index do |session, index| %>
-      <i class='fa fa-calendar'></i><%= formatted_session_fancy_date(session) %><% if index < event.event_sessions.length - 1 %><br /><% end %>
-    <% end %>
-  </div>
-  <div class='event-location'>
-    <% if event.location %>
-      <i class='fa fa-map-marker'></i><%= event.location.name %>,
-      <%= [event.location.city, event.location.state].select(&:present?).join(', ') %>
-    <% end %>
-  </div>
-  <div class='event-counts'>
-    <div>
-      <i class='fa fa-user'></i>Volunteers: <%= event.volunteer_rsvps_count %> 
-      <% if event.volunteer_rsvp_limit %>
-      / <%= event.volunteer_rsvp_limit %>
-      <% end %>
-      <% if event.volunteers_at_limit? %>
-        (<%= event.volunteer_waitlist_rsvps_count %> Waitlisted)
-      <% end %>
+  <div class="row">
+    <div class="col-sm-3">
+      <img src="https://placekitten.com/600/400" class='img-responsive center-block'>
     </div>
-    <% if event.allow_student_rsvp %>
-      <div>
-        <i class='fa fa-user'></i>Participants: <%= event.student_rsvps_count %> / <%= event.student_rsvp_limit %>
-        <% if event.students_at_limit? %>
-          (<%= event.student_waitlist_rsvps_count %> Waitlisted)
+    <div class='col-sm-9'>
+      <div class='event-title'>
+        <%= link_to event.title, event %>
+        <%= external_links(event) %>
+      </div>
+    
+      <div class='event-times'>
+        <% event.event_sessions.each_with_index do |session, index| %>
+          <i class='fa fa-calendar'></i><%= formatted_session_fancy_date(session) %><% if index < event.event_sessions.length - 1 %><br /><% end %>
         <% end %>
       </div>
-    <% end %>
-  </div>
-  <div class='event-actions'>
-    <% if user_signed_in? %>
-      <%= render 'shared/rsvp_actions', event: event %>
-      <% if event.organizer?(current_user) || current_user.admin? %>
-        <%= link_to 'Organizer Console', event_organizer_tools_path(event), :class => 'btn fa-before fa-bullhorn' %>
-      <% elsif event.checkiner?(current_user) %>
-        <%= link_to 'Checkin Console', event_event_sessions_path(event), :class => 'btn' %>
-      <% end %>
-    <% else %>
-      <%= render 'shared/rsvp_actions_unauthenticated', event: event, stay_on_event: true %>
-    <% end %>
+      <div class='event-location'>
+        <% if event.location %>
+          <i class='fa fa-map-marker'></i><%= event.location.name %>,
+          <%= [event.location.city, event.location.state].select(&:present?).join(', ') %>
+        <% end %>
+      </div>
+
+      <div class='event-details'>
+        <% if event.details %>
+          <%= truncate(strip_tags(event.details), length: 160) %>
+        <% end %>
+      </div>
+
+      <div class='event-actions'>
+        <% if user_signed_in? %>
+
+          <% if event.organizer?(current_user) || current_user.admin? %>
+            <%= link_to 'Organizer Console', event_organizer_tools_path(event), :class => 'btn fa-before fa-bullhorn' %>
+          <% elsif event.checkiner?(current_user) %>
+            <%= link_to 'Checkin Console', event_event_sessions_path(event), :class => 'btn' %>
+          <% end %>
+         <% end %>
+
+      </div>
+    </div>
   </div>
 </div>

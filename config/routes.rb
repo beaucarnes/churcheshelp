@@ -1,13 +1,6 @@
 Bridgetroll::Application.routes.draw do
-  get 'ministries/new'
 
-  get 'ministries/edit'
-
-  get 'ministry/new'
-
-  get 'ministry/edit'
-
-  root to: "events#index"
+  root to: "static_pages#index"
 
   devise_for :users, controllers: {
     registrations: "devise_overrides/registrations",
@@ -21,6 +14,9 @@ Bridgetroll::Application.routes.draw do
   resources :meetup_users, only: [:show]
 
   resources :locations
+
+  resources :ministries
+
   resources :regions do
     resources :region_leaderships, only: [:index, :create, :destroy]
   end
@@ -85,7 +81,6 @@ Bridgetroll::Application.routes.draw do
     end
   end
 
-  resources :ministries
   
   resources :external_events, except: [:show]
 

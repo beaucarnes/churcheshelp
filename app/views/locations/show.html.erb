@@ -32,6 +32,7 @@
 
 <%= render 'shared/actions', links: [
   ['New Event', new_event_path(:location_id => @location)],
+  ['New Ongoing Ministry', new_ministry_path(:location_id => @location)],
   ['Edit', edit_location_path(@location)],
   ['Back', locations_path]
 ] %>

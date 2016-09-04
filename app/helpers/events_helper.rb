@@ -106,7 +106,7 @@ module EventsHelper
   end
 
   def student_attend_button_text(event)
-    event.students_at_limit? ? 'Join the student waitlist' : 'Attend as a student'
+    event.students_at_limit? ? 'Join the participant waitlist' : 'Attend'
   end
 
   def volunteer_attend_button_text(event)

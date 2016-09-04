@@ -2,7 +2,16 @@ class MinistriesController < ApplicationController
   before_action :find_ministry, except: [:index, :feed, :create, :new]
 
   def index
-    @ministries = Ministry.all
+    
+    respond_to do |format|
+      format.html do
+        @ministries = Ministry.published_or_organized_by(current_user)
+        @ministry_regions = @ministries.map { |e| e.region }.compact.uniq
+      end
+      format.json do
+        render json: EventList.new(params[:type])
+      end
+    end
   end
 
   def new

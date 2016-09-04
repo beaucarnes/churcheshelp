@@ -1,4 +1,4 @@
-<%= content_for(:header_text, "Unpublished events") %>
+<%= content_for(:header_text, "Unpublished events and ministries") %>
 
 <div class="row">
   <div class="col-md-12">
@@ -11,12 +11,19 @@
         <li>Fix typos if you feel like it.</li>
       </ul>
       <p>If anything is unclear or if you have questions, email the organizer (their email address is listed under the Google map on the event page). You can also seek guidance from <%= mail_to "board@railsbridge.org" %>.</p>
-
+      <h2> Events</h2> 
       <% if @events.empty? %>
-        <h2>There are currently no unpublished events.</h2>
+        <h3>There are currently no unpublished events.</h3>
       <% end %>
       <% @events.each do |event| %>
         <%= render 'unpublished_event', event: event %>
+      <% end %>
+      <h2> Ongoing Ministries</h2> 
+      <% if @ministries.empty? %>
+        <h3>There are currently no unpublished ministries.</h3>
+      <% end %>
+      <% @ministries.each do |ministry| %>
+        <%= render 'unpublished_ministry', ministry: ministry %>
       <% end %>
     </div>
 
