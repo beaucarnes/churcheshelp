@@ -74,7 +74,6 @@ GEM
     capybara-screenshot (1.0.11)
       capybara (>= 1.0, < 3)
       launchy
-    choice (0.2.0)
     cliver (0.3.2)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -249,11 +248,6 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
-    rails-erd (1.5.0)
-      activerecord (>= 3.2)
-      activesupport (>= 3.2)
-      choice (~> 0.2.0)
-      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
     rails_12factor (0.0.3)
@@ -289,7 +283,6 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    ruby-graphviz (1.2.2)
     safe_yaml (1.0.4)
     sanitize (4.0.0)
       crass (~> 1.0.2)
@@ -391,7 +384,6 @@ DEPENDENCIES
   rails-assets-DataTables!
   rails-assets-select2!
   rails-assets-sinonjs!
-  rails-erd
   rails_12factor
   rb-fsevent
   rspec-collection_matchers
@@ -406,9 +398,6 @@ DEPENDENCIES
   trix
   uglifier
   webmock
-
-RUBY VERSION
-   ruby 2.3.1p112
 
 BUNDLED WITH
    1.12.5

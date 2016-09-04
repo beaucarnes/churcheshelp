@@ -43,7 +43,6 @@ gem 'backbone-on-rails'
 gem 'masonry-rails'
 
 group :development do
-  gem "rails-erd"
   gem 'quiet_assets'
   gem 'rb-fsevent'
   gem "bullet"
