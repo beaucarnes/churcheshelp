@@ -1,0 +1,42 @@
+<div class='event-card  <% unless ministry.published? %>unpublished<% end %>' data-region-id="<%= ministry.region.try(:id) %>">
+  <% unless ministry.published? %>
+    <div class='pull-right unpublished-indicator'><%= state_display(ministry) %></div>
+  <% end %>
+  <div class="row">
+    <div class="col-sm-3">
+      <img src="https://placekitten.com/600/400" class='img-responsive center-block'>
+    </div>
+    <div class='col-sm-9'>
+      <div class='event-title'>
+        <%= link_to ministry.title, ministry %>
+      </div>
+    
+      <div class='event-times'>
+     
+          <i class='fa fa-calendar'></i><%= ministry.when %>
+      </div>
+      <div class='event-location'>
+        <% if ministry.location %>
+          <i class='fa fa-map-marker'></i><%= ministry.location.name %>,
+          <%= [ministry.location.city, ministry.location.state].select(&:present?).join(', ') %>
+        <% end %>
+      </div>
+
+      <div class='event-details'>
+        <% if ministry.details %>
+          <%= truncate(strip_tags(ministry.details), length: 160) %>
+        <% end %>
+      </div>
+
+      <div class='event-actions'>
+        <% if user_signed_in? %>
+
+          <% if ministry.organizer?(current_user) || current_user.admin? %>
+            <%= link_to 'Edit Ministry', edit_ministry_path(ministry), :class => 'btn fa-before fa-bullhorn' %>
+          <% end %>
+         <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

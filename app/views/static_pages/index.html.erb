@@ -1,0 +1,37 @@
+<div class="row about">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Churches Help</h1>
+
+    <p>
+      Churches do many great things for communities. <strong>Churches Help</strong> exists to connect people with events and ministries offered by churches.
+    </p> 
+    <p>
+    <strong>Events</strong> are one-time only and include things such as neighborhood picnics, marriage workshops, and youth retreats. 
+    </p>
+    <p>
+    <strong>Ministries</strong> are ongoing and include things such as food pantries, free counseling services, and programs that give away bikes.
+    </p>
+    <p> Search our database of events and ministires, or just see everything offered by a certain church!
+    </p>
+    <p>
+    <strong>Want to add an event or ministry to our website?</strong><br>Find (or add) your church on the <%= link_to "Churches", locations_path %> section. 
+    Then, add your event or ministry directly from the churches page. Once it is approved, it will show up for everyone!
+    </p>
+
+      <% links = [
+        ['Events', events_path],
+        ['Ongoing Ministries', ministries_path],
+        ['Churches', locations_path]
+      ] %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <% links << ['Publish Unpublished Events / Ministries', unpublished_events_path] %>
+      <% end %>
+    <% end %>
+    <div class="text-center">
+    <%= render 'shared/actions', links: links, additional_class: 'no-margin' %>
+    <%= link_to "About Churches Help", about_path %>
+    </div>
+
+  </div>
+</div>

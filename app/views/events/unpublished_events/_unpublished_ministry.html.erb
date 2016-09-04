@@ -1,0 +1,28 @@
+<div class='event-card event-<%= ministry.id %>'>
+  <div class='event-title'>
+    <%= link_to ministry.title, ministry %>
+  </div>
+  <div class='event-times'>
+
+      <i class='fa fa-calendar'></i><%= ministry.when %>
+
+  </div>
+  <div class='event-location'>
+    <% if ministry.location %>
+      <i class='fa fa-map-marker'></i><%= ministry.location.name %>,
+      <%= [ministry.location.city, ministry.location.state].select(&:present?).join(', ') %>
+    <% end %>
+  </div>
+  <div class='event-actions'>
+    <% if ministry.location %>
+
+        <%= button_to 'Publish', unpublished_event_publish_path(ministry, ministry: true), class: 'btn', method: :post,
+                      data: {confirm: "Are you sure? The ministry will start showing for all users."} %>
+
+    <% else %>
+      <button class="btn" disabled>No Location - Can't Publish!</button>
+    <% end %>
+    <%= button_to 'Flag as Spam', unpublished_event_flag_path(ministry), class: 'btn btn-danger', method: :post,
+                  data: {confirm: "Are you sure? This will remove this ministry from the approval page."} %>
+  </div>
+</div>
