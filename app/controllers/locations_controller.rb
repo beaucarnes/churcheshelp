@@ -20,30 +20,30 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
 
     if @location.save
-      redirect_to @location, notice: 'Location was successfully created.'
+      redirect_to @location, notice: 'Church was successfully created.'
     else
       render :new
     end
   end
 
   def update
-    if params[:commit] == 'Archive Location'
+    if params[:commit] == 'Archive Church'
       if @location.archivable_by?(current_user)
         @location.archive!
-        return redirect_to locations_path, notice: 'Location was successfully archived.'
+        return redirect_to locations_path, notice: 'Church was successfully archived.'
       else
-        return redirect_to @location, alert: 'This location is only editable by admins and organizers of events that have taken place there.'
+        return redirect_to @location, alert: 'This church is only editable by admins and organizers of events that have taken place there.'
       end
     end
 
     unless @location.editable_by?(current_user)
-      return redirect_to @location, alert: 'This location is only editable by admins and organizers of events that have taken place there.'
+      return redirect_to @location, alert: 'This church is only editable by admins and organizers of events that have taken place there.'
     end
 
     @location.gmaps = false
 
     if @location.update_attributes(location_params)
-      redirect_to @location, notice: 'Location was successfully updated.'
+      redirect_to @location, notice: 'Church was successfully updated.'
     else
       render :edit
     end
@@ -51,7 +51,7 @@ class LocationsController < ApplicationController
 
   def destroy
     if @location.events.count > 0
-      return redirect_to root_url, alert: "Can't delete a location that's still assigned to an event."
+      return redirect_to root_url, alert: "Can't delete a church that's still assigned to an event."
     end
 
     @location.destroy

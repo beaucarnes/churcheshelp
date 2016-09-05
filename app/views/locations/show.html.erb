@@ -7,7 +7,7 @@
   <div class="col-md-8">
     <% if @location.archived_at.present? %>
       <div class="alert alert-warning">
-        This location is archived, and can no longer be used for events.
+        This church is archived, and can no longer be used for events.
       </div>
     <% end %>
     <% if @location.region.has_leader?(current_user) %>
