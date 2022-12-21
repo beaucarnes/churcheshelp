@@ -32,8 +32,8 @@ group :production do
   gem 'rack-timeout'
 end
 
-gem 'handlebars_assets'
-gem 'sass-rails', '>= 5.0.5'
+gem 'handlebars_assets', '>= 0.23.0'
+gem 'sass-rails', '>= 6.0.0'
 gem 'coffee-rails', '>= 4.2.2'
 gem 'uglifier'
 gem 'bootstrap-sass', '>= 3.4.0'
