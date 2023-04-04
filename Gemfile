@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 
-gem 'dotenv-rails', '>= 2.2.2', groups: [:development, :test]
+gem 'dotenv-rails', '>= 2.7.6', groups: [:development, :test]
 
 gem 'trix'
-gem 'rails', '5.2.8.1'
+gem 'rails', '6.1.7.3'
 gem 'devise', '~> 4.7.1'
 gem 'puma', '>= 4.3.12'
 gem 'jquery-rails', '>= 4.4.0'
@@ -32,12 +32,12 @@ group :production do
   gem 'rack-timeout'
 end
 
-gem 'handlebars_assets'
-gem 'sass-rails', '>= 5.0.5'
+gem 'handlebars_assets', '>= 0.23.0'
+gem 'sass-rails', '>= 6.0.0'
 gem 'coffee-rails', '>= 4.2.2'
 gem 'uglifier'
 gem 'bootstrap-sass', '>= 3.4.0'
-gem 'font-awesome-rails', '>= 4.7.0.4'
+gem 'font-awesome-rails', '>= 4.7.0.6'
 gem 'jquery-ui-rails', '>= 6.0.0'
 gem 'backbone-on-rails'
 gem 'masonry-rails'
