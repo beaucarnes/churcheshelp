@@ -19,7 +19,7 @@ gem 'omniauth-twitter', '>= 1.3.0'
 gem 'omniauth-github', '>= 2.0.0'
 gem 'gravatar_image_tag'
 gem 'simple_form', '>= 5.0.0'
-gem 'rack-canonical-host', '>= 0.2.1'
+gem 'rack-canonical-host', '>= 1.2.0'
 gem 'icalendar'
 gem 'pg' if ENV['FORCE_POSTGRES']
 
