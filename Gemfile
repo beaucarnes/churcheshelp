@@ -6,7 +6,7 @@ gem 'dotenv-rails', '>= 2.2.2', groups: [:development, :test]
 gem 'trix'
 gem 'rails', '5.2.8.1'
 gem 'devise', '~> 4.7.1'
-gem 'puma', '>= 4.3.12'
+gem 'puma', '>= 5.6.8'
 gem 'jquery-rails', '>= 4.4.0'
 gem 'nested_form'
 gem 'active_hash'
