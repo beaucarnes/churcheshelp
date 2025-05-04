@@ -57,7 +57,7 @@ group :test, :development do
   gem 'jasmine'
   gem 'jasmine-jquery-rails'
   gem 'sqlite3'
-  gem 'rspec-rails', '>= 3.5.0'
+  gem 'rspec-rails', '>= 8.0.0'
   gem 'rspec-collection_matchers'
   gem 'awesome_print'
 end
