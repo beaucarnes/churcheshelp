@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'dotenv-rails', '>= 2.2.2', groups: [:development, :test]
 
 gem 'trix'
-gem 'rails', '5.2.8.1'
+gem 'rails', '7.0.0'
 gem 'devise', '~> 4.7.1'
 gem 'puma', '>= 4.3.12'
 gem 'jquery-rails', '>= 4.4.0'
@@ -33,7 +33,7 @@ group :production do
 end
 
 gem 'handlebars_assets'
-gem 'sass-rails', '>= 5.0.5'
+gem 'sass-rails', '>= 6.0.0'
 gem 'coffee-rails', '>= 4.2.2'
 gem 'uglifier'
 gem 'bootstrap-sass', '>= 3.4.0'
