@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 
 
-gem 'dotenv-rails', '>= 2.2.2', groups: [:development, :test]
+gem 'dotenv-rails', '>= 2.1.0', groups: [:development, :test]
 
-gem 'trix'
-gem 'rails', '5.2.8.1'
-gem 'devise', '~> 4.7.1'
+gem 'trix', '>= 0.9.8'
+gem 'rails', '4.2.5.1'
+gem 'devise', '~> 3.5.3'
 gem 'puma', '>= 4.3.12'
-gem 'jquery-rails', '>= 4.4.0'
+gem 'jquery-rails', '>= 4.1.0'
 gem 'nested_form'
 gem 'active_hash'
-gem 'sanitize', '>= 5.2.1'
+gem 'sanitize', '>= 4.0.1'
 gem 'gmaps4rails'
 gem 'geocoder', '>= 1.6.1'
 gem 'omniauth-meetup'
@@ -18,7 +18,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter', '>= 1.3.0'
 gem 'omniauth-github', '>= 2.0.0'
 gem 'gravatar_image_tag'
-gem 'simple_form', '>= 5.0.0'
+gem 'simple_form', '>= 3.2.1'
 gem 'rack-canonical-host', '>= 0.2.1'
 gem 'icalendar'
 gem 'pg' if ENV['FORCE_POSTGRES']
@@ -34,10 +34,10 @@ end
 
 gem 'handlebars_assets'
 gem 'sass-rails', '>= 5.0.5'
-gem 'coffee-rails', '>= 4.2.2'
+gem 'coffee-rails', '>= 4.1.1'
 gem 'uglifier'
 gem 'bootstrap-sass', '>= 3.4.0'
-gem 'font-awesome-rails', '>= 4.7.0.4'
+gem 'font-awesome-rails', '>= 4.5.0.1'
 gem 'jquery-ui-rails', '>= 6.0.0'
 gem 'backbone-on-rails'
 gem 'masonry-rails'
@@ -57,20 +57,20 @@ group :test, :development do
   gem 'jasmine'
   gem 'jasmine-jquery-rails'
   gem 'sqlite3'
-  gem 'rspec-rails', '>= 3.5.0'
+  gem 'rspec-rails', '>= 3.4.1'
   gem 'rspec-collection_matchers'
   gem 'awesome_print'
 end
 
 group :test do
   gem 'webmock'
-  gem "factory_girl_rails"
-  gem 'capybara', '>= 2.5.0'
-  gem "poltergeist"
+  gem "factory_girl_rails", ">= 4.6.0"
+  gem 'capybara', '>= 2.6.0'
+  gem "poltergeist", ">= 1.9.0"
   gem "launchy"
   gem 'shoulda-matchers'
   gem "faker"
-  gem 'capybara-screenshot'
+  gem 'capybara-screenshot', '>= 1.0.12'
   # Remove after Rails 5: https://github.com/rails/rails/pull/18458
   gem 'test_after_commit'
 end
