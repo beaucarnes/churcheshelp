@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 
 gem 'dotenv-rails', '>= 2.2.2', groups: [:development, :test]
 
-gem 'trix'
-gem 'rails', '5.2.8.1'
+gem 'trix', '>= 0.9.8'
+gem 'rails', '7.1.5.2'
 gem 'devise', '~> 4.7.1'
 gem 'puma', '>= 4.3.12'
 gem 'jquery-rails', '>= 4.4.0'
@@ -72,7 +72,7 @@ group :test do
   gem "faker"
   gem 'capybara-screenshot'
   # Remove after Rails 5: https://github.com/rails/rails/pull/18458
-  gem 'test_after_commit'
+  gem 'test_after_commit', '>= 0.5.0'
 end
 
 source 'https://rails-assets.org' do
